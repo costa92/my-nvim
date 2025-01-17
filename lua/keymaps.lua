@@ -15,3 +15,7 @@ map('n', '<leader>te', '<Esc>:FloatermToggle<CR>', opts)
 map('n', '<leader>g', '<Esc>:CocCommand git.showBlameDoc<CR>', opts)
 map('v', '<C-c>', '"+y', opts)
 map('n', '<C-v>', '"*p', opts)
+
+
+-- u 撤销你刚才做的动作
+-- ctrl+r 是恢复你刚才撤销的动作

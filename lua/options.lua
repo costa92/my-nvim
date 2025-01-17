@@ -11,7 +11,7 @@ vim.opt.expandtab = true -- tabs are spaces, mainly because of python
 
 -- UI config
 vim.opt.number = true -- show absolute number
-vim.wo.relativenumber = true -- show relative number
+vim.wo.relativenumber = false  -- show relative number
 vim.opt.cursorline = true -- highlight cursor line underneath the cursor horizontally
 vim.opt.splitbelow = true -- open new vertical split bottom
 vim.opt.splitright = true -- open new horizontal splits right
@@ -22,10 +22,18 @@ vim.opt.showmode = false -- we are experienced, wo don't need the "-- INSERT --"
 vim.opt.incsearch = true -- search as characters are entered
 vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+vim.opt.wildmode = "longest:full,full" -- 优化补全行为
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+
+--编码相关
+vim.opt.encoding="utf-8"  -- 默认编码为 UTF-8
+vim.opt.fileencoding="utf-8" -- 文件保存时的编码为 UTF-8
+vim.opt.fileencodings="ucs-bom,utf-8,cp936,latin1,gb18030,gbk,gb2312,chinese" -- 文件编码探测顺序
+vim.opt.fileformats="unix,dos" -- 文件换行符格式（Unix 和 DOS）
 
 vim.cmd([[
 if has("autocmd")

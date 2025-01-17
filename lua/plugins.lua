@@ -67,6 +67,47 @@ return require('packer').startup(function(use)
         use 'github/copilot.vim'
         use 'lukas-reineke/indent-blankline.nvim'
 
+        use {
+            'hrsh7th/nvim-cmp',
+            requires = {
+                'hrsh7th/cmp-cmdline',
+                'hrsh7th/cmp-nvim-lsp',
+            },
+            config = function()
+                local cmp = require('cmp')
+                cmp.setup({
+                    mapping = {
+                        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                        ['<Tab>'] = cmp.mapping(function(fallback)
+                            if cmp.visible() then
+                                cmp.select_next_item()
+                            else
+                                fallback()
+                            end
+                        end, { 'i', 's' }),
+                        ['<S-Tab>'] = cmp.mapping(function(fallback)
+                            if cmp.visible() then
+                                cmp.select_prev_item()
+                            else
+                                fallback()
+                            end
+                        end, { 'i', 's' }),
+                    },
+                    sources = {
+                        { name = 'nvim_lsp' },
+                        { name = 'buffer' },
+                        { name = 'path' },
+                    },
+                })
+                
+                cmp.setup.cmdline(':', {
+                    mapping = cmp.mapping.preset.cmdline(),
+                    sources = {
+                        { name = 'cmdline' }
+                    }
+                })
+            end
+        }
         -- Automatically set up your configuration after cloning packer.nvim
         -- Put this at the end after all plugins
         if packer_bootstrap then
