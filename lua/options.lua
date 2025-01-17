@@ -1,30 +1,30 @@
--- Hint: use `:h <option>` to figure out the meaning if needed
-vim.opt.clipboard = 'unnamedplus' -- use system clipboard
+-- 提示：使用 `:h <option>` 查看选项的具体含义
+vim.opt.clipboard = 'unnamedplus' -- 使用系统剪贴板
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-vim.opt.mouse = 'a' -- allow the mouse to be used in Nvim
+vim.opt.mouse = 'a' -- 允许在Nvim中使用鼠标
 
--- Tab
-vim.opt.tabstop = 4 -- number of visual spaces per TAB
-vim.opt.softtabstop = 4 -- number of spacesin tab when editing
-vim.opt.shiftwidth = 4 -- insert 4 spaces on a tab
-vim.opt.expandtab = true -- tabs are spaces, mainly because of python
+-- 制表符
+vim.opt.tabstop = 4 -- TAB键显示的空格数
+vim.opt.softtabstop = 4 -- 编辑时TAB键代表的空格数
+vim.opt.shiftwidth = 4 -- 缩进使用4个空格
+vim.opt.expandtab = true -- TAB转换为空格,主要用于Python
 
--- UI config
-vim.opt.number = true -- show absolute number
-vim.wo.relativenumber = false  -- show relative number
-vim.opt.cursorline = true -- highlight cursor line underneath the cursor horizontally
-vim.opt.splitbelow = true -- open new vertical split bottom
-vim.opt.splitright = true -- open new horizontal splits right
-vim.opt.termguicolors = true        -- enabl 24-bit RGB color in the TUI
-vim.opt.showmode = true -- we are experienced, wo don't need the "-- INSERT --" mode hint
+-- 界面配置
+vim.opt.number = true -- 显示绝对行号
+vim.wo.relativenumber = false  -- 显示相对行号
+vim.opt.cursorline = true -- 高亮显示当前行
+vim.opt.splitbelow = true -- 新的垂直分割窗口在下方打开
+vim.opt.splitright = true -- 新的水平分割窗口在右侧打开
+vim.opt.termguicolors = true        -- 启用终端24位RGB颜色支持
+vim.opt.showmode = true -- 显示当前模式提示
 vim.opt.laststatus = 2 -- 总是显示状态栏
 vim.opt.ruler = true -- 显示光标位置（行号、列号）
 vim.opt.scrolloff = 5 -- 光标距离顶部/底部的最小行数
 vim.opt.guifont = "FiraCode Nerd Font:h12" 
 
--- Searching
-vim.opt.ignorecase = true -- ignore case in searches by default
-vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+-- 搜索设置
+vim.opt.ignorecase = true -- 搜索时默认忽略大小写
+vim.opt.smartcase = true -- 如果搜索包含大写字母则区分大小写
 vim.opt.wildmode = "longest:full,full" -- 优化补全行为
 vim.opt.incsearch = true -- 增量搜索（输入时实时匹配）
 vim.opt.hlsearch = true -- 高亮显示搜索结果
@@ -32,7 +32,7 @@ vim.opt.ignorecase = true -- 搜索时忽略大小写
 vim.opt.smartcase = true -- 如果搜索模式包含大写字母，则区分大小写
 vim.opt.showmatch = true -- 高亮显示匹配的括号
 
--- disable netrw at the very start of your init.lua
+-- 在初始化时禁用netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
