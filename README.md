@@ -132,3 +132,6 @@ You can modify the language-related shortcut keys in file `lua/options-plugins.l
 Option 1: First, `fork` the code repository, then update the feature, and finally, initiate a `pull request`.
 
 Option 2: Directly open an issue.
+
+
+# [配置](https://blog.csdn.net/qq_39852676/article/details/144956063)

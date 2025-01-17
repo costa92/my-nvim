@@ -19,3 +19,9 @@ map('n', '<C-v>', '"*p', opts)
 
 -- u 撤销你刚才做的动作
 -- ctrl+r 是恢复你刚才撤销的动作
+
+--分屏的设置快捷键
+vim.keymap.set('n', 'sl', ':set splitright<CR>:vsplit<CR>', {noremap=true, silent=true})
+vim.keymap.set('n', 'sh', ':set nosplitright<CR>:vsplit<CR>', {noremap=true, silent=true})
+vim.keymap.set('n', 'sk', ':set nosplitbelow<CR>:split<CR>', {noremap=true, silent=true})
+vim.keymap.set('n', 'sj', ':set splitbelow<CR>:split<CR>', {noremap=true, silent=true})
