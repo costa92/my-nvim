@@ -66,4 +66,20 @@
 - `:wq` - 保存并退出
 - `:CocInstall [package]` - 安装 Coc 扩展
 - `:PackerSync` - 同步插件
+- `:CocInstall coc-go` - 安装 Go 语言支持
+- `:CocCommand go.install.gopls` - 安装 gopls
+
+## Go 语言特定快捷键
+
+| 快捷键 | 模式 | 功能描述 |
+|--------|------|----------|
+| `gd` | 普通 | 跳转到定义 (gopls) |
+| `:GoDef` | 命令 | 跳转到定义 |
+| `:GoDoc` | 命令 | 显示文档 |
+| `:GoFmt` | 命令 | 格式化代码 |
+| `:GoImports` | 命令 | 自动导入包 |
+| `:GoImplements` | 命令 | 显示接口实现 |
+| `:GoRename` | 命令 | 重命名标识符 |
+| `:GoTest` | 命令 | 运行测试 |
+| `:GoCoverage` | 命令 | 显示测试覆盖率 |
   
