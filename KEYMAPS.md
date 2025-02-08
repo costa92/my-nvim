@@ -65,4 +65,5 @@
 - `:q` - 退出
 - `:wq` - 保存并退出
 - `:CocInstall [package]` - 安装 Coc 扩展
-- `:PackerSync` - 同步插件  
+- `:PackerSync` - 同步插件
+  

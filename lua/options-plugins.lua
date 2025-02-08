@@ -81,9 +81,9 @@ keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
 keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
 -- GitHub Copilot配置
-vim.cmd([[imap <silent><script><expr> <C-K> copilot#Accept("\<CR>")]])
-vim.cmd([[let g:copilot_no_tab_map = v:true]])
-vim.cmd([[ let g:copilot_filetypes = {
-                              \ '*': v:true,
-                              \ }
-]])
+-- vim.cmd([[imap <silent><script><expr> <C-K> copilot#Accept("\<CR>")]])
+-- vim.cmd([[let g:copilot_no_tab_map = v:true]])
+-- vim.cmd([[ let g:copilot_filetypes = {
+--                               \ '*': v:true,
+--                               \ }
+-- ]])
