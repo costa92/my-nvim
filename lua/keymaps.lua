@@ -1,16 +1,13 @@
 -- define common options
 
-local opts = {
-    noremap = true,      -- non-recursive
-    silent = true,       -- do not show message
-}
-local map = vim.api.nvim_set_keymap
-
--- vim.g.mapleader = "\\"
--- vim.g.maplocalleader = "\\"
-
+-- 先定义 Leader 键
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+
+-- 下面才开始设置快捷键
+local opts = { noremap = true, silent = true }
+local map = vim.api.nvim_set_keymap
+
 
 map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
 map('n', '<leader>tf', '<Esc>:NvimTreeFindFile<CR>', opts)
