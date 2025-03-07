@@ -24,4 +24,4 @@ map('n', '<C-v>', '"*p', opts)
 -- Alt + hjkl 窗口间切换窗口
 
 -- Alt + m  
-map('n', '<A-m>', ':NvimTreeToggle<CR>', opt) 
+map('n', '<A-m>', ':NvimTreeToggle<CR>', opts) 
