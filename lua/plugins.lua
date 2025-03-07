@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
         use 'fatih/vim-go'
         use 'mhinz/vim-startify'
         -- use 'github/copilot.vim'
-        use 'lukas-reineke/indent-blankline.nvim'
+        -- use 'lukas-reineke/indent-blankline.nvim'
 
         use {
             'hrsh7th/nvim-cmp',
