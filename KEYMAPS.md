@@ -95,3 +95,9 @@ x 剪切
 c 拷贝
 p 粘贴
 d 删除
+
+## vim查询快捷键是否已被使用
+
+`verbose map <key>` 其中<key>即为你要查询的按键。
+
+`verbose map <F2>`
