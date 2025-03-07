@@ -7,8 +7,10 @@ local opts = {
 local map = vim.api.nvim_set_keymap
 
 -- vim.g.mapleader = "\\"
-vim.g.mapleader= "<Space>"
 -- vim.g.maplocalleader = "\\"
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
 map('n', '<leader>tf', '<Esc>:NvimTreeFindFile<CR>', opts)
@@ -27,3 +29,12 @@ map('n', '<C-v>', '"*p', opts)
 
 -- Alt + m  
 map('n', '<A-m>', ':NvimTreeToggle<CR>', opts) 
+
+
+-- Ctrl + S 保存
+map("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
+map("i", "<C-s>", "<Esc>:w<CR>a", { noremap = true, silent = true })
+
+
+-- Ctrl + W 关闭当前 buffer
+map("n", "<C-w>", ":bd<CR>", { noremap = true, silent = true })
