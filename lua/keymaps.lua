@@ -1,5 +1,4 @@
 -- define common options
-let mapleader = " "
 
 local opts = {
     noremap = true,      -- non-recursive
