@@ -1,4 +1,6 @@
 -- define common options
+let mapleader = " "
+
 local opts = {
     noremap = true,      -- non-recursive
     silent = true,       -- do not show message
@@ -6,6 +8,7 @@ local opts = {
 local map = vim.api.nvim_set_keymap
 
 -- vim.g.mapleader = "\\"
+vim.g.mapleader= " "
 -- vim.g.maplocalleader = "\\"
 
 map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
