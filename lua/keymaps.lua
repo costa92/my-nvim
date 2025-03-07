@@ -7,7 +7,7 @@ local opts = {
 local map = vim.api.nvim_set_keymap
 
 -- vim.g.mapleader = "\\"
-vim.g.mapleader= " "
+vim.g.mapleader= "<Space>"
 -- vim.g.maplocalleader = "\\"
 
 map('n', '<leader>t', ':NvimTreeToggle<CR>', opts)
