@@ -38,8 +38,14 @@ return require('packer').startup(function(use)
         ---------------------------------------
         -- NOTE: PUT YOUR THIRD PLUGIN HERE --
         ---------------------------------------
-        use { "ellisonleao/gruvbox.nvim" }
-        use 'luisiacc/the-matrix.nvim'
+        use {
+            "ellisonleao/gruvbox.nvim",
+            priority = 1000
+        }
+        use {
+            'luisiacc/the-matrix.nvim',
+            requires = 'nvim-treesitter/nvim-treesitter'
+        }
         use 'vim-airline/vim-airline'
         use 'vim-airline/vim-airline-themes'
         use {
