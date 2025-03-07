@@ -87,3 +87,13 @@ keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 --                               \ '*': v:true,
 --                               \ }
 -- ]])
+
+-- nvim-tree 
+require'nvim-tree'.setup {
+  -- 关闭文件时自动关闭
+  auto_close = true,
+  -- 显示 git 状态图标
+  git = {
+      enable = tree
+  }
+}

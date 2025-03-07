@@ -20,3 +20,6 @@ map('n', '<C-v>', '"*p', opts)
 -- u 撤销你刚才做的动作
 -- ctrl+r 是恢复你刚才撤销的动作
 
+-- nvimTree
+-- Alt + hjkl 窗口间切换窗口
+map('n', '<A-m>', ':NvimTreeToggle<CR>', opt) -- Alt + m 
