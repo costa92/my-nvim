@@ -28,7 +28,7 @@ map('n', '<Leader>v', '<C-v>', opts)
 -- =====================
 
 -- 智能的水平分割窗口命令
-vim.keymap.set('n', 'so', function()
+vim.keymap.set('n', 'ss', function()
   -- 获取当前缓冲区的信息
   local buftype = vim.bo.buftype
   local filetype = vim.bo.filetype
@@ -45,8 +45,8 @@ vim.keymap.set('n', 'so', function()
   end
 end, { noremap = true, silent = true })
 
--- 同样为 vo 命令添加类似的智能行为
-vim.keymap.set('n', 'vo', function()
+-- 同样为 sv 命令添加类似的智能行为
+vim.keymap.set('n', 'sv', function()
   local buftype = vim.bo.buftype
   local filetype = vim.bo.filetype
   local modifiable = vim.bo.modifiable
@@ -223,3 +223,24 @@ vim.keymap.set('n', 's', function()
   split_mode = false
   vim.api.nvim_echo({{"", ""}}, false, {})
 end, { noremap = true, silent = true })
+
+-- 使用 ss 和 sv 进行窗口分割
+-- ss: 水平分割窗口
+vim.keymap.set('n', 'ss', ':split<CR>', { noremap = true, silent = true })
+-- sv: 垂直分割窗口
+vim.keymap.set('n', 'sv', ':vsplit<CR>', { noremap = true, silent = true })
+
+-- 在水平分割的窗口中打开指定 buffer
+vim.keymap.set('n', 'sb', ':split | buffer ', { noremap = true })
+-- 在垂直分割的窗口中打开指定 buffer
+vim.keymap.set('n', 'vb', ':vsplit | buffer ', { noremap = true })
+
+-- 在水平分割的窗口中打开指定文件
+vim.keymap.set('n', 'sf', ':split ', { noremap = true })
+-- 在垂直分割的窗口中打开指定文件
+vim.keymap.set('n', 'vf', ':vsplit ', { noremap = true })
+
+-- 关闭当前窗口
+vim.keymap.set('n', 'sc', ':close<CR>', { noremap = true, silent = true })
+-- 关闭其他窗口
+vim.keymap.set('n', 'so', ':only<CR>', { noremap = true, silent = true })
