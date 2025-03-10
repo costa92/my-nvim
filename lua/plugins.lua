@@ -70,6 +70,7 @@ return require('packer').startup(function(use)
         -- })
         use 'fatih/vim-go'
         use 'mhinz/vim-startify'
+        use 'lukas-reineke/indent-blankline.nvim'
         -- use 'github/copilot.vim'
         -- require("ibl").setup()
 
