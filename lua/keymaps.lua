@@ -1,9 +1,5 @@
 -- define common options
 
--- 先定义 Leader 键
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- 下面才开始设置快捷键
 local opts = { noremap = true, silent = true }
 local map = vim.api.nvim_set_keymap
