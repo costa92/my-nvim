@@ -35,3 +35,27 @@ map("i", "<C-s>", "<Esc>:w<CR>a", { noremap = true, silent = true })
 
 -- Ctrl + W 关闭当前 buffer
 map("n", "<C-w>", ":bd<CR>", { noremap = true, silent = true })
+
+
+-- 将窗口导航快捷键从 Ctrl+w 修改为 Alt
+-- Alt+w 循环切换到下一个窗口
+vim.keymap.set('n', '<A-w>', '<C-w>w', { noremap = true, silent = true })
+-- Alt+W 循环切换到上一个窗口
+vim.keymap.set('n', '<A-W>', '<C-w>W', { noremap = true, silent = true })
+-- Alt+h 移动到左侧窗口
+vim.keymap.set('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
+-- Alt+j 移动到下方窗口
+vim.keymap.set('n', '<A-j>', '<C-w>j', { noremap = true, silent = true })
+-- Alt+k 移动到上方窗口
+vim.keymap.set('n', '<A-k>', '<C-w>k', { noremap = true, silent = true })
+-- Alt+l 移动到右侧窗口
+vim.keymap.set('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
+
+-- Alt+s 水平分割窗口
+vim.keymap.set('n', '<A-s>', ':split<CR>', { noremap = true, silent = true })
+-- Alt+v 垂直分割窗口
+vim.keymap.set('n', '<A-v>', ':vsplit<CR>', { noremap = true, silent = true })
+-- Alt+q 关闭当前窗口
+vim.keymap.set('n', '<A-q>', ':close<CR>', { noremap = true, silent = true })
+-- Alt+o 关闭其他窗口
+vim.keymap.set('n', '<A-o>', ':only<CR>', { noremap = true, silent = true })
