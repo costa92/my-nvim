@@ -130,3 +130,15 @@ vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true 
 vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+
+require("nvim-tree").setup({
+  view = {
+    mappings = {
+      list = {
+        -- 修改 s 键的映射，例如改为 sh
+        { key = "s", action = "" },  -- 清除 s 键的默认映射
+        { key = "sh", action = "split" },  -- 使用 sh 代替 s 进行水平分割
+      },
+    },
+  },
+})
