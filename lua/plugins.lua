@@ -79,6 +79,8 @@ return require('packer').startup(function(use)
             requires = {
                 'hrsh7th/cmp-cmdline',
                 'hrsh7th/cmp-nvim-lsp',
+                'hrsh7th/cmp-buffer',
+                'hrsh7th/cmp-path',
             },
             config = function()
                 local cmp = require('cmp')
