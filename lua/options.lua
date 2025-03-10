@@ -92,3 +92,20 @@ vim.opt.mouse = 'a'
 
 -- 当切换 buffer 时保持光标位置
 vim.opt.startofline = false
+
+
+-- 在某些文件类型中自动设置为不可修改
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"help", "startify", "dashboard", "packer", "neogitstatus", "NvimTree", "Trouble"},
+  callback = function()
+    vim.opt_local.modifiable = false
+  end
+})
+
+-- 在某些文件类型中自动设置为可修改（如果你想覆盖默认行为）
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {"gitcommit", "markdown"},
+  callback = function()
+    vim.opt_local.modifiable = true
+  end
+})
