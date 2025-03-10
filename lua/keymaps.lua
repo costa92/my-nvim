@@ -115,3 +115,32 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+
+-- 运行当前Go文件
+vim.keymap.set('n', '<Leader>gr', ':GoRun<CR>', opts)
+-- 测试当前Go包
+vim.keymap.set('n', '<Leader>gt', ':GoTest<CR>', opts)
+-- 测试当前Go函数
+vim.keymap.set('n', '<Leader>gtf', ':GoTestFunc<CR>', opts)
+-- 构建当前Go包
+vim.keymap.set('n', '<Leader>gb', ':GoBuild<CR>', opts)
+-- 显示Go文档
+vim.keymap.set('n', '<Leader>gd', ':GoDoc<CR>', opts)
+-- 跳转到定义
+vim.keymap.set('n', '<Leader>gdf', ':GoDef<CR>', opts)
+-- 返回跳转前的位置
+vim.keymap.set('n', '<Leader>gdb', ':GoDefPop<CR>', opts)
+-- 重命名标识符
+vim.keymap.set('n', '<Leader>grn', ':GoRename<CR>', opts)
+-- 显示接口实现
+vim.keymap.set('n', '<Leader>gi', ':GoImplements<CR>', opts)
+-- 显示调用者
+vim.keymap.set('n', '<Leader>gc', ':GoCallers<CR>', opts)
+-- 显示被调用者
+vim.keymap.set('n', '<Leader>gce', ':GoCallees<CR>', opts)
+-- 添加/移除标签
+vim.keymap.set('n', '<Leader>gat', ':GoAddTags<CR>', opts)
+-- 移除标签
+vim.keymap.set('n', '<Leader>grt', ':GoRemoveTags<CR>', opts)
+-- 填充结构体
+vim.keymap.set('n', '<Leader>gfs', ':GoFillStruct<CR>', opts)

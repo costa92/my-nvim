@@ -138,3 +138,9 @@ vim.api.nvim_create_autocmd("QuitPre", {
     end
 })
 
+-- 在适当位置添加以下代码，确保coc-go扩展自动安装
+vim.g.coc_global_extensions = vim.g.coc_global_extensions or {}
+table.insert(vim.g.coc_global_extensions, 'coc-go')
+
+
+

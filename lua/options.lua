@@ -108,3 +108,23 @@ vim.api.nvim_create_autocmd("BufEnter", {
     command = "set modifiable"
 })
 
+
+-- Go语言相关设置
+vim.g.go_def_mode = 'godef'  -- 使用godef进行定义跳转
+vim.g.go_fmt_command = 'goimports'  -- 保存时使用goimports而不是gofmt
+vim.g.go_highlight_types = 1  -- 高亮显示类型
+vim.g.go_highlight_fields = 1  -- 高亮显示字段
+vim.g.go_highlight_functions = 1  -- 高亮显示函数
+vim.g.go_highlight_function_calls = 1  -- 高亮显示函数调用
+vim.g.go_highlight_operators = 1  -- 高亮显示操作符
+vim.g.go_highlight_extra_types = 1  -- 高亮显示额外类型
+vim.g.go_highlight_build_constraints = 1  -- 高亮显示构建约束
+vim.g.go_highlight_generate_tags = 1  -- 高亮显示生成标签
+vim.g.go_metalinter_autosave = 1  -- 保存时自动运行metalinter
+vim.g.go_metalinter_autosave_enabled = {'vet', 'golint'}  -- 自动保存时启用的linter
+vim.g.go_auto_type_info = 1  -- 自动显示标识符类型
+vim.g.go_auto_sameids = 1  -- 自动高亮相同的标识符
+vim.g.go_doc_keywordprg_enabled = 0  -- 禁用K键查看文档(与coc.nvim冲突)
+
+
+
