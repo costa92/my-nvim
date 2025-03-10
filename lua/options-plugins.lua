@@ -89,11 +89,30 @@ keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 -- ]])
 
 -- nvim-tree 
-require'nvim-tree'.setup {
+require("nvim-tree").setup({
   -- 关闭文件时自动关闭
   auto_close = true,
   -- 显示 git 状态图标
   git = {
       enable = tree
-  }
-}
+  },
+  -- 使用 on_attach 函数来设置键映射
+  on_attach = function(bufnr)
+    local api = require('nvim-tree.api')
+    
+    local function opts(desc)
+      return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+    
+    -- 默认映射
+    api.config.mappings.default_on_attach(bufnr)
+    
+    -- 移除 s 键的默认映射
+    vim.keymap.del('n', 's', { buffer = bufnr })
+    
+    -- 添加自定义映射
+    vim.keymap.set('n', 'sh', api.node.open.horizontal, opts('Open: Horizontal Split'))
+    -- 或者如果你想保留 s 键在 nvim-tree 中的功能，但改为使用 sh
+    -- vim.keymap.set('n', 'sh', api.node.open.horizontal, opts('Open: Horizontal Split'))
+  end,
+})
