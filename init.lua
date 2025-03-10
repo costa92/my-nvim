@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
+vim.lsp.set_log_level("debug")
 -- 增加键映射超时时间
 vim.opt.timeoutlen = 1000
 
