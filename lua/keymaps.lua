@@ -27,11 +27,37 @@ map('n', '<Leader>v', '<C-v>', opts)
 -- 窗口管理
 -- =====================
 
--- 窗口分割（使用 so/vo 风格）
-vim.keymap.set('n', 'so', ':split<CR>', opts)
-vim.keymap.set('n', 'vo', ':vsplit<CR>', opts)
-vim.keymap.set('n', 'sc', ':close<CR>', opts)  -- split close
-vim.keymap.set('n', 'so!', ':only<CR>', opts)  -- split only (关闭其他窗口)
+-- 智能的水平分割窗口命令
+vim.keymap.set('n', 'so', function()
+  -- 获取当前缓冲区的信息
+  local buftype = vim.bo.buftype
+  local filetype = vim.bo.filetype
+  local modifiable = vim.bo.modifiable
+  
+  -- 检查是否是特殊缓冲区
+  if not modifiable or buftype ~= "" or filetype == "NvimTree" or filetype == "help" then
+    -- 在特殊缓冲区中，先切换到上一个窗口，然后执行分割
+    vim.cmd("wincmd p")
+    vim.cmd("split")
+  else
+    -- 在普通缓冲区中，直接执行分割
+    vim.cmd("split")
+  end
+end, { noremap = true, silent = true })
+
+-- 同样为 vo 命令添加类似的智能行为
+vim.keymap.set('n', 'vo', function()
+  local buftype = vim.bo.buftype
+  local filetype = vim.bo.filetype
+  local modifiable = vim.bo.modifiable
+  
+  if not modifiable or buftype ~= "" or filetype == "NvimTree" or filetype == "help" then
+    vim.cmd("wincmd p")
+    vim.cmd("vsplit")
+  else
+    vim.cmd("vsplit")
+  end
+end, { noremap = true, silent = true })
 
 -- 窗口导航（使用 Alt 键风格）
 vim.keymap.set('n', '<A-h>', '<C-w>h', opts)
@@ -149,3 +175,12 @@ vim.keymap.set('n', '<Leader>tn', ':tabnew<CR>', { noremap = true, silent = true
 vim.keymap.set('n', '<Leader>tl', ':tabnext<CR>', { noremap = true, silent = true })
 -- 切换到上一个标签页
 vim.keymap.set('n', '<Leader>th', ':tabprevious<CR>', { noremap = true, silent = true })
+
+-- 在 NvimTree 中使用特定的快捷键进行分割
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "NvimTree",
+  callback = function()
+    vim.keymap.set('n', 'sh', "<C-w>p:split<CR>", { buffer = true, noremap = true, silent = true })
+    vim.keymap.set('n', 'sv', "<C-w>p:vsplit<CR>", { buffer = true, noremap = true, silent = true })
+  end
+})
