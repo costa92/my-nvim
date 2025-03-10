@@ -88,14 +88,24 @@ keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 --                               \ }
 -- ]])
 
--- nvim-tree 
+
+-- nvim-tree
 require("nvim-tree").setup({
-  -- 关闭文件时自动关闭
-  auto_close = true,
+  -- 移除 auto_close，因为它已被删除
+  -- auto_close = true, ❌ 不再支持，删除
+
   -- 显示 git 状态图标
   git = {
-      enable = tree
+      enable = true  -- ✅ 修正 `tree` 变量未定义的问题
   },
+
+  -- 让 NvimTree 保持打开状态，不在打开文件后关闭
+  actions = {
+      open_file = {
+          quit_on_open = false, -- ✅ 允许多个窗口
+      },
+  },
+
   -- 使用 on_attach 函数来设置键映射
   on_attach = function(bufnr)
     local api = require('nvim-tree.api')
@@ -112,7 +122,19 @@ require("nvim-tree").setup({
     
     -- 添加自定义映射
     vim.keymap.set('n', 'sh', api.node.open.horizontal, opts('Open: Horizontal Split'))
-    -- 或者如果你想保留 s 键在 nvim-tree 中的功能，但改为使用 sh
-    -- vim.keymap.set('n', 'sh', api.node.open.horizontal, opts('Open: Horizontal Split'))
   end,
 })
+
+-- 自动关闭 nvim-tree，如果它是最后一个窗口
+vim.api.nvim_create_autocmd("QuitPre", {
+    callback = function()
+        local wins = vim.api.nvim_list_wins()
+        if #wins == 1 then
+            local buf = vim.api.nvim_win_get_buf(wins[1])
+            if vim.bo[buf].filetype == "NvimTree" then
+                vim.cmd("quit")
+            end
+        end
+    end
+})
+

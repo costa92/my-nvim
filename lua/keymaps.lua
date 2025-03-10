@@ -60,19 +60,6 @@ map('n', '<Leader>te', '<Esc>:FloatermToggle<CR>', opts)
 -- Coc
 map('n', '<Leader>g', '<Esc>:CocCommand git.showBlameDoc<CR>', opts)
 
--- Buffer 管理快捷键
--- 列出所有 buffer
-vim.keymap.set('n', '<Leader>bl', ':buffers<CR>', { noremap = true, silent = true })
--- 切换到下一个 buffer
-vim.keymap.set('n', '<Leader>bn', ':bnext<CR>', { noremap = true, silent = true })
--- 切换到上一个 buffer
-vim.keymap.set('n', '<Leader>bp', ':bprevious<CR>', { noremap = true, silent = true })
--- 关闭当前 buffer
-vim.keymap.set('n', '<Leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
--- 切换到指定编号的 buffer（输入编号后回车）
-vim.keymap.set('n', '<Leader>bb', ':buffer ', { noremap = true })
--- 切换到最近使用的 buffer
-vim.keymap.set('n', '<Leader>b<Leader>', ':b#<CR>', { noremap = true, silent = true })
 
 -- u 撤销你刚才做的动作
 -- ctrl+r 是恢复你刚才撤销的动作
@@ -88,88 +75,43 @@ vim.keymap.set('n', '<Leader>b<Leader>', ':b#<CR>', { noremap = true, silent = t
 -- map("n", "<C-w>", ":bd<CR>", { noremap = true, silent = true })
 
 
--- 将窗口导航快捷键从 Ctrl+w 修改为 Alt
--- Alt+w 循环切换到下一个窗口
-vim.keymap.set('n', '<A-w>', '<C-w>w', { noremap = true, silent = true })
--- Alt+W 循环切换到上一个窗口
-vim.keymap.set('n', '<A-W>', '<C-w>W', { noremap = true, silent = true })
--- Alt+h 移动到左侧窗口
-vim.keymap.set('n', '<A-h>', '<C-w>h', { noremap = true, silent = true })
--- Alt+j 移动到下方窗口
-vim.keymap.set('n', '<A-j>', '<C-w>j', { noremap = true, silent = true })
--- Alt+k 移动到上方窗口
-vim.keymap.set('n', '<A-k>', '<C-w>k', { noremap = true, silent = true })
--- Alt+l 移动到右侧窗口
-vim.keymap.set('n', '<A-l>', '<C-w>l', { noremap = true, silent = true })
+-- =====================
+-- Buffer 管理快捷键
+-- =====================
+vim.keymap.set("n", "<Leader>bl", ":buffers<CR>", opts)
+vim.keymap.set("n", "<Leader>bn", ":bnext<CR>", opts)
+vim.keymap.set("n", "<Leader>bp", ":bprevious<CR>", opts)
+vim.keymap.set("n", "<Leader>bd", ":bdelete<CR>", opts)
+vim.keymap.set("n", "<Leader>bb", ":buffer ", { noremap = true })
+vim.keymap.set("n", "<Leader>b<Leader>", ":b#<CR>", opts)
 
--- Alt+s 水平分割窗口
-vim.keymap.set('n', '<A-s>', ':split<CR>', { noremap = true, silent = true })
--- Alt+v 垂直分割窗口
-vim.keymap.set('n', '<A-v>', ':vsplit<CR>', { noremap = true, silent = true })
--- Alt+q 关闭当前窗口
-vim.keymap.set('n', '<A-q>', ':close<CR>', { noremap = true, silent = true })
--- Alt+o 关闭其他窗口
-vim.keymap.set('n', '<A-o>', ':only<CR>', { noremap = true, silent = true })
+-- =====================
+-- 窗口分割相关快捷键
+-- =====================
+-- 水平分割窗口：使用 "ss"
+vim.keymap.set("n", "ss", ":split<CR>", opts)
+-- 垂直分割窗口：使用 "sv"
+vim.keymap.set("n", "sv", ":vsplit<CR>", opts)
+-- 关闭当前窗口：使用 "sc"
+vim.keymap.set("n", "sc", ":close<CR>", opts)
+-- 关闭其他窗口：使用 "so"
+vim.keymap.set("n", "so", ":only<CR>", opts)
 
-
--- 使用 so 和 vo 键来进行窗口分割
--- so 键用于水平分割窗口
-vim.keymap.set('n', 'so', ':split<CR>', { noremap = true, silent = true })
--- vo 键用于垂直分割窗口
-vim.keymap.set('n', 'vo', ':vsplit<CR>', { noremap = true, silent = true })
+-- 在分割窗口中打开 buffer 或文件
+vim.keymap.set("n", "sb", ":split | buffer ", { noremap = true })
+vim.keymap.set("n", "vb", ":vsplit | buffer ", { noremap = true })
+vim.keymap.set("n", "sf", ":split ", { noremap = true })
+vim.keymap.set("n", "vf", ":vsplit ", { noremap = true })
 
 
--- 窗口导航（使用 Ctrl 组合键）
-vim.keymap.set('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
+-- 全局 s 键映射，举例：将 s 映射为删除当前行（仅在可修改 buffer 中生效）
+-- vim.api.nvim_set_keymap("n", "s", "dd", { noremap = true, silent = true })
 
-
--- 调整窗口大小
-vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
-
--- 在水平分割的窗口中打开 buffer
-vim.keymap.set('n', 'so', ':split<CR>', { noremap = true, silent = true })
--- 在垂直分割的窗口中打开 buffer
-vim.keymap.set('n', 'vo', ':vsplit<CR>', { noremap = true, silent = true })
--- 在新标签页中打开 buffer
-vim.keymap.set('n', '<Leader>tn', ':tabnew<CR>', { noremap = true, silent = true })
--- 切换到下一个标签页
-vim.keymap.set('n', '<Leader>tl', ':tabnext<CR>', { noremap = true, silent = true })
--- 切换到上一个标签页
-vim.keymap.set('n', '<Leader>th', ':tabprevious<CR>', { noremap = true, silent = true })
-
--- 在 NvimTree 中使用特定的快捷键进行分割
+-- 对于不可修改的 buffer（如 NvimTree、help 等），禁用 s 键
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "NvimTree",
+  pattern = { "NvimTree", "help", "terminal" },
   callback = function()
-    vim.keymap.set('n', 'sh', "<C-w>p:split<CR>", { buffer = true, noremap = true, silent = true })
-    vim.keymap.set('n', 'sv', "<C-w>p:vsplit<CR>", { buffer = true, noremap = true, silent = true })
-  end
+    vim.keymap.set("n", "s", "<Nop>", { buffer = true })
+  end,
 })
 
-
--- 使用 ss 和 sv 进行窗口分割
--- ss: 水平分割窗口
-vim.keymap.set('n', 'ss', ':split<CR>', { noremap = true, silent = true })
--- sv: 垂直分割窗口
-vim.keymap.set('n', 'sv', ':vsplit<CR>', { noremap = true, silent = true })
-
--- 在水平分割的窗口中打开指定 buffer
-vim.keymap.set('n', 'sb', ':split | buffer ', { noremap = true })
--- 在垂直分割的窗口中打开指定 buffer
-vim.keymap.set('n', 'vb', ':vsplit | buffer ', { noremap = true })
-
--- 在水平分割的窗口中打开指定文件
-vim.keymap.set('n', 'sf', ':split ', { noremap = true })
--- 在垂直分割的窗口中打开指定文件
-vim.keymap.set('n', 'vf', ':vsplit ', { noremap = true })
-
--- 关闭当前窗口
-vim.keymap.set('n', 'sc', ':close<CR>', { noremap = true, silent = true })
--- 关闭其他窗口
-vim.keymap.set('n', 'so', ':only<CR>', { noremap = true, silent = true })
