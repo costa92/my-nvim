@@ -72,3 +72,15 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 ]])
+
+-- 允许在有未保存修改的 buffer 的情况下切换到其他 buffer
+vim.opt.hidden = true
+
+-- 在状态栏显示当前 buffer 的编号
+vim.opt.laststatus = 2
+
+-- 允许使用鼠标
+vim.opt.mouse = 'a'
+
+-- 当切换 buffer 时保持光标位置
+vim.opt.startofline = false

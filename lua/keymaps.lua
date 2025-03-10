@@ -71,7 +71,19 @@ map('n', '<Leader>te', '<Esc>:FloatermToggle<CR>', opts)
 -- Coc
 map('n', '<Leader>g', '<Esc>:CocCommand git.showBlameDoc<CR>', opts)
 
-
+-- Buffer 管理快捷键
+-- 列出所有 buffer
+vim.keymap.set('n', '<Leader>bl', ':buffers<CR>', { noremap = true, silent = true })
+-- 切换到下一个 buffer
+vim.keymap.set('n', '<Leader>bn', ':bnext<CR>', { noremap = true, silent = true })
+-- 切换到上一个 buffer
+vim.keymap.set('n', '<Leader>bp', ':bprevious<CR>', { noremap = true, silent = true })
+-- 关闭当前 buffer
+vim.keymap.set('n', '<Leader>bd', ':bdelete<CR>', { noremap = true, silent = true })
+-- 切换到指定编号的 buffer（输入编号后回车）
+vim.keymap.set('n', '<Leader>bb', ':buffer ', { noremap = true })
+-- 切换到最近使用的 buffer
+vim.keymap.set('n', '<Leader>b<Leader>', ':b#<CR>', { noremap = true, silent = true })
 
 -- u 撤销你刚才做的动作
 -- ctrl+r 是恢复你刚才撤销的动作
@@ -130,3 +142,14 @@ vim.keymap.set('n', '<C-Up>', ':resize +2<CR>', { noremap = true, silent = true 
 vim.keymap.set('n', '<C-Down>', ':resize -2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', { noremap = true, silent = true })
+
+-- 在水平分割的窗口中打开 buffer
+vim.keymap.set('n', 'so', ':split<CR>', { noremap = true, silent = true })
+-- 在垂直分割的窗口中打开 buffer
+vim.keymap.set('n', 'vo', ':vsplit<CR>', { noremap = true, silent = true })
+-- 在新标签页中打开 buffer
+vim.keymap.set('n', '<Leader>tn', ':tabnew<CR>', { noremap = true, silent = true })
+-- 切换到下一个标签页
+vim.keymap.set('n', '<Leader>tl', ':tabnext<CR>', { noremap = true, silent = true })
+-- 切换到上一个标签页
+vim.keymap.set('n', '<Leader>th', ':tabprevious<CR>', { noremap = true, silent = true })
