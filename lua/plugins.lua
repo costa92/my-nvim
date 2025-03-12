@@ -85,8 +85,20 @@ return require('packer').startup(function(use)
             config = function()
                 local cmp = require('cmp')
                 cmp.setup({
-                    mapping = {
-                        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                    completion = {
+                        completeopt = 'menu,menuone,noinsert',
+                    },
+                    mapping = cmp.mapping.preset.insert({
+                        ['<C-n>'] = cmp.mapping.select_next_item(),
+                        ['<C-p>'] = cmp.mapping.select_prev_item(),
+                        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+                        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                        ['<C-Space>'] = cmp.mapping.complete(),
+                        ['<C-e>'] = cmp.mapping.abort(),
+                        ['<CR>'] = cmp.mapping.confirm({ 
+                            select = true,
+                            behavior = cmp.ConfirmBehavior.Replace 
+                        }),
                         ['<Tab>'] = cmp.mapping(function(fallback)
                             if cmp.visible() then
                                 cmp.select_next_item()
@@ -101,11 +113,17 @@ return require('packer').startup(function(use)
                                 fallback()
                             end
                         end, { 'i', 's' }),
-                    },
-                    sources = {
+                    }),
+                    sources = cmp.config.sources({
                         { name = 'nvim_lsp' },
                         { name = 'buffer' },
                         { name = 'path' },
+                    }),
+                    snippet = {
+                        expand = function(args)
+                            -- 如果你使用 snippets，这里需要配置 snippet 引擎
+                            -- 如果不使用，可以保留为空函数
+                        end,
                     },
                 })
                 
